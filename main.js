@@ -97,6 +97,10 @@ function Validator(options) {
                     }, {});
                     options.onSubmit(formValues);
                     alert("Đăng kí thành công!");
+
+                    enableInputs.forEach(function(input) {
+                        input.value = ''; // Reset giá trị rỗng
+                    });
                 }
                 // Trường hợp submit với hành vi mặc định
                 else {
