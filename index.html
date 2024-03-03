@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+
+        <form action="" method="POST" class="form" id="form-1">
+          <h3 class="heading">Form Đăng Kí</h3>
+  
+          <div class="spacer"></div>
+  
+          <div class="form-group">
+            <label for="fullname" class="form-label"></label>
+            <input id="fullname" name="fullname" type="text" placeholder="Họ và tên" class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <div class="form-group">
+            <label for="email" class="form-label"></label>
+            <input id="email" name="email" type="text" placeholder="Email" class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <div class="form-group">
+            <label for="password" class="form-label"></label>
+            <input id="password" name="password" type="password" placeholder="Mật khẩu" class="form-control">
+            <span class="form-message"></span>
+          </div>
+
+  
+          <button class="form-submit">Đăng ký</button>
+        </form>
+
+    
+</body>
+<script src="main.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mong muốn của chúng ta
+      Validator({
+        form: '#form-1',
+        formGroupSelector: '.form-group',
+        errorSelector: '.form-message',
+        rules: [
+          Validator.isRequired('#fullname', ' '),
+          Validator.isEmail('#email'),
+          Validator.minLength('#password', 1),
+        //   Validator.isRequired('#password_confirmation'),
+        //   Validator.isConfirmed('#password_confirmation', function () {
+        //     return document.querySelector('#form-1 #password').value;
+        //   }, 'Mật khẩu nhập lại không chính xác')
+        ],
+        onSubmit: function (data) {
+          // Call API
+          console.log(data);
+        }
+      });
+    });
+
+  </script>
+</html>
